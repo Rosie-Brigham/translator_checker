@@ -4,7 +4,7 @@ class Checker
 
   def initialize(language)
     @language = language
-    @file_hash_data = YAML.load_file("translations_#{@language}.yml") 
+    @file_hash_data = YAML.load_file("./lib/translations_#{@language}.yml") 
     gap_checker_signup
     gap_checker_hompage
     gap_checker_robots
@@ -35,6 +35,7 @@ class Checker
   end
 
   def print
+    message =[]
     if @file_email_entry == nil
       puts "Need translation for password entry"
     end
@@ -72,7 +73,6 @@ class Checker
 
 end
 
-
 class PrintResults < Checker
   
   language_indicators = {"Welsh" => "cy", "German" => "de", "English" => "en", "French" => "fr", "Italian" => "it"}
@@ -84,7 +84,3 @@ class PrintResults < Checker
   end
 
 end
-
-
-
-
