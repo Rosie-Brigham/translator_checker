@@ -4,13 +4,15 @@ class Checker
 
   def initialize(language)
     @language = language
-    @file_hash_data = YAML.load_file("./lib/translations_#{@language}.yml") 
+    @file_hash_data = YAML.load_file("/Users/rbrigham/Code/week_four/translator/lib/translations_#{@language}.yml") 
     gap_checker_signup
     gap_checker_hompage
     gap_checker_robots
     gap_checker_purchase     
   end
+  # check out how to nice-i-fy absolute paths
   
+  # get these so they are not specific (future proof)
   def gap_checker_signup
     @file_email_entry = @file_hash_data["en"]["signup"]["error"]["password_too_short"]
     @file_password_entry = @file_hash_data["en"]["signup"]["error"]["email_required"]
@@ -33,11 +35,11 @@ class Checker
     @file_error_address_entry = @file_hash_data["en"]["purchase"]["error"]["address_required"]
     @file_success_entry = @file_hash_data["en"]["purchase"]["success"]
   end
-
+# work on getting all the puts out of here
   def print
     message =[]
     if @file_email_entry == nil
-      puts "Need translation for password entry"
+      message << "Need translation for password entry"
     end
     if @file_password_entry == nil
       puts "Need translation for email entry"
@@ -72,7 +74,7 @@ class Checker
   end
 
 end
-
+# get this in a seperate file
 class PrintResults < Checker
   
   language_indicators = {"Welsh" => "cy", "German" => "de", "English" => "en", "French" => "fr", "Italian" => "it"}
