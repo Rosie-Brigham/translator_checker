@@ -5,10 +5,9 @@ describe Checker do
  subject do
   test_checker = Checker.new("en")
 end
+
 describe "#initialize" do
-
   it "should should store the argument in an instance variable" do
-
     subject.language.should eq "en"
   end
 
@@ -58,15 +57,20 @@ describe "#initialize" do
       different_langauge = Checker.new("fr")
       different_langauge.print.should include("Need translation for password entry")
     end
+    
     it "puts a message into an array if there is no email entry" do
       different_langauge = Checker.new("fr")
       different_langauge.print.should include("Need translation for email entry")
     end
+    
     it "puts a message into an array if there is no header entry" do
-      different_langauge = Checker.new("fr")
-      different_langauge.print.should include("Need translation for header entry")
+        subject.file_path=("./spec/fixtures/translations_test.yml")
+        subject.file_path should eq "./spec/fixtures/translations_test.yml"
     end
   end
 
 end
 
+# use test translation files, and write your 
+# original class so the name of the file can be passed in,
+#  allowing your tests to use the test files

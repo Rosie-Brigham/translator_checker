@@ -1,5 +1,5 @@
 # require './translator'
-# class PrintResults < Checker
+# class PrintResults
   
 #   language_indicators = {"Welsh" => "cy", "German" => "de", "English" => "en", "French" => "fr", "Italian" => "it"}
 

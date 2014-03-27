@@ -5,13 +5,21 @@ class Checker
 
   def initialize(language)
     @language = language
-    @file_hash_data = YAML.load_file("/Users/rbrigham/Code/week_four/translator/lib/translations_#{@language}.yml") 
+    @file_hash_data = YAML.load_file(file_path) 
     gap_checker_signup
     gap_checker_hompage
     gap_checker_robots
     gap_checker_purchase     
   end
   # check out how to nice-i-fy absolute paths
+  
+  def file_path=(path)
+    @file_path = path
+  end
+
+  def file_path
+    @file_path
+  end
   
   # get these so they are not specific (future proof)
   def gap_checker_signup
@@ -46,7 +54,7 @@ class Checker
       message << "Need translation for email entry" 
     end
     if @file_header_entry == nil
-      puts "Need translation for header, in homepage"
+      message << "Need translation for header, in homepage"
     end
     if @file_tagline_entry == nil
       puts "Need translation for tagline, in homepage"
