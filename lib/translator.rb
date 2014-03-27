@@ -1,6 +1,7 @@
 require 'yaml'
 
 class Checker
+  attr_accessor :language, :file_hash_data
 
   def initialize(language)
     @language = language
@@ -42,7 +43,7 @@ class Checker
       message << "Need translation for password entry"
     end
     if @file_password_entry == nil
-      puts "Need translation for email entry"
+      message << "Need translation for email entry" 
     end
     if @file_header_entry == nil
       puts "Need translation for header, in homepage"
@@ -71,6 +72,7 @@ class Checker
     if @file_success_entry == nil
       puts "Need translation for purchase comfirmation and thank you message, in purchase success"
     end
+    message
   end
 
 end
